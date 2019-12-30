@@ -3,7 +3,7 @@ const createProject = (name) => {
   const items = { items: []}
   const additem = {
     additem: function additem(item) {
-      item.itemNumber = numberOfItems++
+      item.itemNumber = this.numberOfItems++
       this.items.push(item)
     }
   }
