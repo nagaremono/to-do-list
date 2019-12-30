@@ -9,7 +9,7 @@ const createToDoItem = (title, description, dueDate, priority) => {
     }
   }
   
-  return {title, description, dueDate, priority, checked, toggleChecked}
+  return Object.assign({}, {title, description, dueDate, priority}, checked, toggleChecked)
 }
 
 export { createToDoItem }
