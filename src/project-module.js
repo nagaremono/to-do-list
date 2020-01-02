@@ -14,3 +14,5 @@ const createProject = (name) => {
   }
   return Object.assign({}, { name }, numberOfItems, items, additem, removeItem)
 }
+
+export { createProject }
