@@ -8,7 +8,7 @@ const getItemFromForm = function() {
 }
 
 const getProjectTitle = function() {
-  const projectTitle = document.getElementById('projectitle').value
+  const projectTitle = document.getElementById('projecttitle').value
 
   return projectTitle
 }

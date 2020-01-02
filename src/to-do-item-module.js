@@ -1,7 +1,7 @@
 "use strict"
 
 const createToDoItem = (title, description, dueDate, priority) => {
-  const checked = { checked: true }
+  const checked = { checked: false }
   const toggleChecked = {
     toggleChecked: function toggleChecked() {
       if (this.checked === true) this.checked = false

@@ -21,74 +21,72 @@
         <table class="table table-striped" id="todos">
           <thead>
             <tr>
-              <th scope="col">Number</th>
               <th scope="col">Title</th>
               <th scope="col">Description</th>
               <th scope="col">Due Date</th>
               <th scope="col">Priority</th>
+              <th scope="col">Check</th>
+              <th scope="col">Remove</th>
+              <th scope="col">Edit</th>
             </tr>
           </thead>
           <tbody>
           </tbody>
         </table>
       </div>
-      <form id="projectform">
-        <div class="form-group row">
-          <label for="projecttitle" class="col-sm-2 col-form-label">Title</label>
-          <div class="col-sm-10">
-            <input type="text" class="form-control" id="projecttitle">
-          </div>
-        </div>
-        <div class="form-group row">
-          <div class="col-sm-10">
-            <button class="btn btn-dark" id="submitproject">Add Project</button>
-          </div>
-        </div>
-      </form>
-      <form id="todoform">
-        <div class="form-group row">
-          <label for="todotitle" class="col-sm-2 col-form-label">Title</label>
-          <div class="col-sm-10">
-            <input type="text" class="form-control" id="todotitle">
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="tododesc" class="col-sm-2 col-form-label">Description</label>
-          <div class="col-sm-10">
-            <input type="text" class="form-control" id="tododesc">
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="duedate" class="col-sm-2 col-form-label">Due Date</label>
-          <div class="col-sm-10">
-            <input type="date" class="form-control" id="duedate">
-          </div>
-        </div>
-        <fieldset class="form-group">
-          <div class="row">
-            <legend class="col-form-label col-sm-2 pt-0">Priority</legend>
+      <div id="projectform">
+        <form >
+          <div class="form-group row">
+            <label for="projecttitle" class="col-sm-2 col-form-label">Title</label>
             <div class="col-sm-10">
-              <div class="form-check">
-                <input class="form-check-input" type="radio" name="priority" id="High" value="High" checked>
-                <label class="form-check-label" for="High">
-                  Low
-                </label>
-              </div>
-              <div class="form-check">
-                <input class="form-check-input" type="radio" name="priority" id="Low" value="Low">
-                <label class="form-check-label" for="Low">
-                  High
-                </label>
-              </div>
+              <input type="text" class="form-control" id="projecttitle">
             </div>
           </div>
-        </fieldset>
-        <div class="form-group row">
-          <div class="col-sm-10">
-            <button class="btn btn-dark" id="submititem">Add Item</button>
+        </form>
+        <button class="btn btn-dark" id="submitproject">Add Project</button>
+      </div>
+      <div id="todoform">
+        <form>
+          <div class="form-group row">
+            <label for="todotitle" class="col-sm-2 col-form-label">Title</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="todotitle">
+            </div>
           </div>
-        </div>
-      </form>
+          <div class="form-group row">
+            <label for="tododesc" class="col-sm-2 col-form-label">Description</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="tododesc">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="duedate" class="col-sm-2 col-form-label">Due Date</label>
+            <div class="col-sm-10">
+              <input type="date" class="form-control" id="duedate">
+            </div>
+          </div>
+          <fieldset class="form-group">
+            <div class="row">
+              <legend class="col-form-label col-sm-2 pt-0">Priority</legend>
+              <div class="col-sm-10">
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="priority" id="High" value="High" checked>
+                  <label class="form-check-label" for="High">
+                    Low
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="priority" id="Low" value="Low">
+                  <label class="form-check-label" for="Low">
+                    High
+                  </label>
+                </div>
+              </div>
+            </div>
+          </fieldset>
+        </form>
+        <button class="btn btn-dark" id="submititem">Add Item</button>
+      </div>
       <button id="addproject">New Project</button>
       <button id="additem">New to do item</button>
     </main>

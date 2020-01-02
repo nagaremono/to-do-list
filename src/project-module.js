@@ -1,8 +1,8 @@
 const createProject = (name) => {
   const numberOfItems = { numberOfItems: 0}
   const items = { items: []}
-  const additem = {
-    additem: function additem(item) {
+  const addItem = {
+    addItem: function addItem(item) {
       item.itemNumber = this.numberOfItems++
       this.items.push(item)
     }
@@ -12,7 +12,7 @@ const createProject = (name) => {
       this.items.splice(item.itemNumber, 1)
     }
   }
-  return Object.assign({}, { name }, numberOfItems, items, additem, removeItem)
+  return Object.assign({}, { name }, numberOfItems, items, addItem, removeItem)
 }
 
 export { createProject }
