@@ -6,6 +6,36 @@ import { createToDoItem } from 'to-do-item-module.js'
 
 "use strict"
 
+const toDoListController = (function() {
+  var projects = []
+  var numberOfProjects = 0
+  var currentProject = createProject('Project 1')
+  currentProject.number = numberOfProjects++
+  projects.push(currentProject)
+
+  const newProject = function() {
+    var projectTitle = getProjectTitle()
+    const project = createProject(projectTitle)
+    project.number = numberOfProjects++
+    projects.push(project)
+    currentProject = project
+    populateProject(projectTitle)
+  }
+
+  const newToDo = function() {
+    var itemDetails = getItemFromForm()
+    const toDo = createToDoItem(itemDetails[0], itemDetails[1], itemDetails[2], itemDetails[3])
+    populateToDoItem(itemDetails[0], itemDetails[1], itemDetails[2], itemDetails[3])
+    return toDo
+  }
+
+  const addToDoToProject = function() {
+    currentProject.addItem(newToDo())
+  }
+
+  return { newProject, addToDoToProject }
+})()
+
 (function() {
   document.getElementById('additem').addEventListener('click', () => {
     const todoForm = document.getElementById('todoform')
@@ -18,22 +48,11 @@ import { createToDoItem } from 'to-do-item-module.js'
     if (projectForm.style.display === 'none') projectForm.style.display = 'block'
     else projectForm.style.display = 'none'
   })
+
+  document.getElementById('submitproject').addEventListener(
+    'click', toDoListController.newProject)
+
+  document.getElementById('submititem').addEventListener(
+    'click', toDoListController.addToDoToProject)
 })()
-
-const toDoListCoordinator = (function() {
-  const newProject = function() {
-    var projectTitle = getProjectTitle()
-    const project = createProject(projectTitle)
-    return project
-  }
-
-  const newToDo = function() {
-    var itemDetails = getItemFromForm()
-    const toDo = createToDoItem(itemDetails[0], itemDetails[1], itemDetails[2], itemDetails[3])
-    return toDo
-  }
-
-  return { newProject, newToDo }
-})
-
 
