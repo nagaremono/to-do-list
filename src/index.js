@@ -9,10 +9,22 @@ import { createToDoItem } from './to-do-item-module.js';
 const toDoListController = (function() {
   var projects = []
   var numberOfProjects = 0
+
   var currentProject = createProject('Project 1')
-  populateProject('Project 1')
   currentProject.number = numberOfProjects++
   projects.push(currentProject)
+  populateProject('Project 1')
+
+  const attachNumber = function() {
+    const projectList = document.querySelector('.projectlist').lastChild
+    const projectButtons = projectList.querySelectorAll('button')
+
+    projectButtons.forEach((button) => {
+    button.setAttribute('data-project-number', `${numberOfProjects - 1}`)
+    });
+  }
+  
+  attachNumber()
 
   const newProject = function() {
     var projectTitle = getProjectTitle()
@@ -21,6 +33,8 @@ const toDoListController = (function() {
     projects.push(project)
     currentProject = project
     populateProject(projectTitle)
+
+    attachNumber()
   }
 
   const newToDo = function() {
@@ -29,6 +43,8 @@ const toDoListController = (function() {
     currentProject.addItem(toDo)
     populateToDoItem(toDo)
   }
+
+  
 
   return { newProject, newToDo };
 })();

@@ -42,6 +42,7 @@ const populateProject = function(name) {
 
   const newProject = document.createElement('li')
   newProject.textContent = name
+  newProject.style.marginLeft = '23px'
 
   const deleteButton = document.createElement('button')
   deleteButton.textContent = 'Delete'
@@ -52,6 +53,11 @@ const populateProject = function(name) {
   editButton.textContent = 'Edit'
   editButton.style.margin = '5px'
   newProject.appendChild(editButton)
+
+  const viewButton = document.createElement('button')
+  viewButton.textContent = 'View'
+  viewButton.style.margin = '5px'
+  newProject.appendChild(viewButton)
 
   projectList.appendChild(newProject)
 }
