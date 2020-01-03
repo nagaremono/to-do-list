@@ -25,6 +25,7 @@ const populateToDoItem = function(item) {
   const deleteColumn = document.createElement('td')
   const deleteButton = document.createElement('button')
   deleteButton.textContent = "Delete"
+  deleteButton.className = 'deletetodo'
   deleteColumn.appendChild(deleteButton)
   toDoRow.appendChild(deleteColumn)
 
