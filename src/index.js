@@ -15,16 +15,28 @@ const toDoListController = (function() {
   projects.push(currentProject)
   populateProject('Project 1')
 
-  const attachNumber = function() {
+  const attachFunctions = function() {
     const projectList = document.querySelector('.projectlist').lastChild
     const projectButtons = projectList.querySelectorAll('button')
 
     projectButtons.forEach((button) => {
     button.setAttribute('data-project-number', `${numberOfProjects - 1}`)
     });
+
+    const viewButton = projectList.querySelector('.viewproject');
+    viewButton.addEventListener('click', (event) => {
+      var projectNumber = event.target.dataset.projectNumber
+      var project = projects[projectNumber]
+      currentProject = project
+
+      document.querySelector('tbody').innerHTML = ''
+      var projectToDos = project['items']
+
+      projectToDos.forEach((toDo) => { populateToDoItem(toDo) })
+    })
   }
   
-  attachNumber()
+  attachFunctions()
 
   const newProject = function() {
     var projectTitle = getProjectTitle()
@@ -33,8 +45,7 @@ const toDoListController = (function() {
     projects.push(project)
     currentProject = project
     populateProject(projectTitle)
-
-    attachNumber()
+    attachFunctions()
   }
 
   const newToDo = function() {
@@ -42,9 +53,7 @@ const toDoListController = (function() {
     const toDo = createToDoItem(itemDetails[0], itemDetails[1], itemDetails[2], itemDetails[3])
     currentProject.addItem(toDo)
     populateToDoItem(toDo)
-  }
-
-  
+  }  
 
   return { newProject, newToDo };
 })();

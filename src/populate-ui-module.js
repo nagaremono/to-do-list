@@ -46,16 +46,19 @@ const populateProject = function(name) {
 
   const deleteButton = document.createElement('button')
   deleteButton.textContent = 'Delete'
+  deleteButton.className = 'deleteproject'
   deleteButton.style.margin = '5px'
   newProject.appendChild(deleteButton)
 
   const editButton = document.createElement('button')
   editButton.textContent = 'Edit'
+  editButton.className = 'editproject'
   editButton.style.margin = '5px'
   newProject.appendChild(editButton)
 
   const viewButton = document.createElement('button')
   viewButton.textContent = 'View'
+  viewButton.className = 'viewproject'
   viewButton.style.margin = '5px'
   newProject.appendChild(viewButton)
 
