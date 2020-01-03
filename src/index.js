@@ -17,6 +17,27 @@ const toDoListController = (function() {
 
   addFunctionsToProjectButtons(project1Buttons, 0)
 
+  function addFunctionToToDoButton(buttonNodeList, index) {
+    buttonNodeList.forEach((button) => {
+      button.setAttribute('data-todo-number', index)
+      if (button.className === 'deletetodo') {
+        button.addEventListener('click', () => {
+          var toDoNumber = event.target.dataset.toDoNumber
+          
+          currentProject['items'].splice(toDoNumber, 1)
+
+          populateProjectToDos(currentProject)
+
+          var toDoList = document.querySelector('tbody').childNodes
+          toDoList.forEach((toDo, index) => {
+            const toDoButtons = toDo.querySelectorAll('button')
+            addFunctionToToDoButton(toDoButtons, index)
+          })
+        })
+      }
+    })
+  }
+
   function populateProjectToDos(project) {
     document.querySelector('tbody').innerHTML = ''
     const toDos = project['items']    
@@ -80,6 +101,12 @@ const toDoListController = (function() {
     const toDo = createToDoItem(itemDetails[0], itemDetails[1], itemDetails[2], itemDetails[3])
     currentProject.addItem(toDo)
     populateToDoItem(toDo)
+
+    var lastAddedToDo = document.querySelector('tbody').lastChild
+    var toDoButtons = lastAddedToDo.querySelectorAll('button')
+    var index = document.querySelector('tbody').childNodes.length - 1
+
+    addFunctionToToDoButton(toDoButtons, index)
   }  
 
   return { newProject, newToDo };

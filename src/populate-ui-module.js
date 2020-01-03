@@ -8,6 +8,7 @@ const populateToDoItem = function(item) {
     if (detail === 'checked') {
       const checkBox = document.createElement('input')
       checkBox.setAttribute('type', 'checkbox')
+      checkBox.className = 'checkbox'
       if (item[detail] === true) {        
         checkBox.setAttribute('value', 'true')
         checkBox.setAttribute('checked')
@@ -32,6 +33,7 @@ const populateToDoItem = function(item) {
   const editColumn = document.createElement('td')
   const editButton = document.createElement('button')
   editButton.textContent = "Edit"
+  editButton.className = 'edittodo'
   editColumn.appendChild(editButton)
   toDoRow.appendChild(editColumn)
 
