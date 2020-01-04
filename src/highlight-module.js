@@ -2,7 +2,7 @@ function highlightProject() {
   const projects = document.querySelector(".projectlist").childNodes;
 
   projects.forEach(project => {
-    project.style.backgroundColor = "#9e9e9e";
+    project.style.backgroundColor = "#e7e7e7";
     project.style.color = "#1e1e1e";
   });
 

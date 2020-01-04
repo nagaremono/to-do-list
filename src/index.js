@@ -36,12 +36,6 @@ const toDoListController = (function() {
 
     currentProject = projects[0];
     populateProjectToDos(currentProject);
-
-    var toDoList = document.querySelector("tbody").childNodes;
-    toDoList.forEach((toDo, index) => {
-      const toDoButtons = toDo.querySelectorAll("button");
-      addFunctionToToDoButton(toDoButtons, index);
-    });
   }
 
   function addFunctionToToDoButton(buttonNodeList, index) {
@@ -54,12 +48,6 @@ const toDoListController = (function() {
           currentProject["items"].splice(toDoNumber, 1);
 
           populateProjectToDos(currentProject);
-
-          var toDoList = document.querySelector("tbody").childNodes;
-          toDoList.forEach((toDo, index) => {
-            const toDoButtons = toDo.querySelectorAll("button");
-            addFunctionToToDoButton(toDoButtons, index);
-          });
         });
       }
     });
@@ -71,6 +59,12 @@ const toDoListController = (function() {
 
     toDos.forEach(toDo => {
       populateToDoItem(toDo);
+    });
+
+    var toDoList = document.querySelector("tbody").childNodes;
+    toDoList.forEach((toDo, index) => {
+      const toDoButtons = toDo.querySelectorAll("button");
+      addFunctionToToDoButton(toDoButtons, index);
     });
   }
 
