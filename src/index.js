@@ -2,6 +2,7 @@ import { getItemFromForm, getProjectTitle } from './get-item-module.js';
 import { populateToDoItem, populateProject } from './populate-ui-module.js';
 import { createProject } from './project-module.js';
 import { createToDoItem } from './to-do-item-module.js';
+import { highlightProject } from './highlight-module';
 
 "use strict"
 
@@ -22,7 +23,7 @@ const toDoListController = (function() {
       button.setAttribute('data-todo-number', index)
       if (button.className === 'deletetodo') {
         button.addEventListener('click', () => {
-          var toDoNumber = event.target.dataset.toDoNumber
+          var toDoNumber = event.target.dataset.todoNumber
           
           currentProject['items'].splice(toDoNumber, 1)
 
@@ -57,6 +58,8 @@ const toDoListController = (function() {
           currentProject = project
 
           populateProjectToDos(currentProject)
+
+          highlightProject()
         })
       } else if (button.className === 'deleteproject') {
         button.addEventListener('click', () => {
