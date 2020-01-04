@@ -11,28 +11,15 @@ const toDoListController = (function() {
   var projects = [];
   var currentProject = {};
 
-  if (getFromStorage() === null) {
+  if (getFromStorage() === null || getFromStorage().length === 0) {
     currentProject = createProject("Project 1");
     projects.push(currentProject);
-    populateProject("Project 1");
-
-    var project1 = document.querySelector(".projectlist").lastChild;
-    var project1Buttons = project1.querySelectorAll("button");
-
-    addFunctionsToProjectButtons(project1Buttons, 0);
+    renderProjects();
   } else {
     projects = getFromStorage();
     document.querySelector(".projectlist").innerHTML = "";
 
-    projects.forEach(project => {
-      populateProject(project.name);
-    });
-
-    const projectList = document.querySelector(".projectlist").childNodes;
-    projectList.forEach((project, index) => {
-      const projectButtons = project.querySelectorAll("button");
-      addFunctionsToProjectButtons(projectButtons, index);
-    });
+    renderProjects();
 
     currentProject = projects[0];
     populateProjectToDos(currentProject);
@@ -88,15 +75,7 @@ const toDoListController = (function() {
 
           document.querySelector(".projectlist").innerHTML = "";
 
-          projects.forEach(project => {
-            populateProject(project.name);
-          });
-
-          const projectList = document.querySelector(".projectlist").childNodes;
-          projectList.forEach((project, index) => {
-            const projectButtons = project.querySelectorAll("button");
-            addFunctionsToProjectButtons(projectButtons, index);
-          });
+          renderProjects();
 
           currentProject = projects[0];
           populateProjectToDos(currentProject);
@@ -144,6 +123,18 @@ const toDoListController = (function() {
   function storeProjects() {
     storeToStorage(projects);
     return null;
+  }
+
+  function renderProjects() {
+    projects.forEach(project => {
+      populateProject(project.name);
+    });
+
+    const projectList = document.querySelector(".projectlist").childNodes;
+    projectList.forEach((project, index) => {
+      const projectButtons = project.querySelectorAll("button");
+      addFunctionsToProjectButtons(projectButtons, index);
+    });
   }
 
   return { newProject, newToDo, storeProjects };
