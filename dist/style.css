@@ -52,7 +52,7 @@ main {
   margin: 10px;
 }
 
-#addproject, #additem {
+#addproject, #additem, #save {
   margin: 25px 15px;
   background-color: #3a68ff;
   font-weight: 900;
@@ -68,6 +68,11 @@ main {
 #additem {
   grid-column: 4;
   grid-row: 3;
+}
+
+#save {
+  grid-column: 4;
+  grid-row: 1;
 }
 
 #projectform {
