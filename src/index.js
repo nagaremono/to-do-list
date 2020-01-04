@@ -133,7 +133,7 @@ const toDoListController = (function() {
       itemDetails[2],
       itemDetails[3]
     );
-    currentProject.addItem(toDo);
+    addItemToProject(toDo);
     populateToDoItem(toDo);
 
     var lastAddedToDo = document.querySelector("tbody").lastChild;
@@ -141,6 +141,10 @@ const toDoListController = (function() {
     var index = document.querySelector("tbody").childNodes.length - 1;
 
     addFunctionToToDoButton(toDoButtons, index);
+  }
+
+  function addItemToProject(item) {
+    currentProject.items.push(item);
   }
 
   function storeProjects() {
